@@ -12,7 +12,7 @@
    address, hard-refresh (Ctrl+Shift+R) or bump CACHE_VERSION in sw.js.
 */
 window.HUB_CONFIG = {
-  API_URL: 'PASTE_YOUR_PUBLIC_WEB_APP_URL_HERE/exec',
+  API_URL: 'https://script.google.com/macros/s/AKfycbyK6ldxQ5qOrIeGH0aPJGE484OxS38ytGYQ980QRjEznWqxP6IifuCimR_bekpAXvX5/exec',
   LOGO_URL: '',
   SW_URL: 'sw.js'
 };
