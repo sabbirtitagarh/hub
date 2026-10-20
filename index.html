@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sabbir — Digital Projects &amp; Web Apps Hub</title>
+<meta name="description" content="Discover practical web applications, educational tools, and websites built by Sabbir.">
+<meta name="theme-color" content="#0b1f44">
+<meta name="color-scheme" content="light">
+<meta name="robots" content="index,follow">
+
+<!-- Installable-app files (all paths are relative, so this works on https://USER.github.io/REPO/ and on a custom domain) -->
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png" type="image/png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Sabbir Hub">
+
+<!-- SEO / social sharing. Link-preview crawlers (WhatsApp, Facebook…) do not run JavaScript and need ABSOLUTE
+     addresses, so after you know your site address (e.g. https://sabbir.github.io/hub/) replace
+     YOUR-SITE-ADDRESS in the 3 lines below and remove the comment markers. See docs/05-GITHUB-PAGES.md. -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Sabbir — Digital Projects &amp; Web Apps Hub">
+<meta property="og:description" content="Discover practical web applications, educational tools, and websites built by Sabbir.">
+<meta name="twitter:card" content="summary">
+<!--
+<link rel="canonical" href="https://YOUR-SITE-ADDRESS/">
+<meta property="og:url" content="https://YOUR-SITE-ADDRESS/">
+<meta property="og:image" content="https://YOUR-SITE-ADDRESS/icons/icon-512.png">
+-->
+
+<link rel="stylesheet" href="assets/hub.css">
+</head>
+<body>
+<a class="hub-skip" href="#hub-main">Skip to content</a>
+
+<header class="hub-header" id="hub-top">
+  <div class="hub-wrap hub-header-in">
+    <a class="hub-brand" href="#home" aria-label="Home">
+      <img id="hub-logo" class="hub-logo" alt="" width="36" height="36" hidden>
+      <span class="hub-logo-fallback" id="hub-logo-fb" aria-hidden="true">S</span>
+      <span class="hub-brand-name" id="hub-brand-name">Sabbir</span>
+    </a>
+    <nav class="hub-nav" id="hub-nav" aria-label="Main">
+      <a href="#home">Home</a>
+      <a href="#projects">Explore Projects</a>
+      <a href="#categories">Categories</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="hub-header-right">
+      <ul class="hub-social" id="hub-social-top" aria-label="Social media"></ul>
+      <a class="hub-btn hub-btn-primary hub-cta" href="#projects">Explore Projects</a>
+      <button class="hub-menu-btn" id="hub-menu-btn" type="button" aria-expanded="false" aria-controls="hub-nav" aria-label="Open menu">
+        <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="hub-main" tabindex="-1">
+  <section class="hub-hero" id="home" aria-labelledby="hub-hero-title">
+    <div class="hub-wrap">
+      <p class="hub-eyebrow" id="hub-hero-eyebrow">Projects directory</p>
+      <h1 id="hub-hero-title">Discover My Digital Projects</h1>
+      <p class="hub-hero-sub" id="hub-hero-sub">Explore practical web applications, useful digital tools, educational projects, and websites built to solve real-world problems.</p>
+      <div class="hub-hero-actions">
+        <a class="hub-btn hub-btn-primary" href="#projects">Explore All Projects</a>
+        <a class="hub-btn hub-btn-ghost" href="#about">About Sabbir</a>
+      </div>
+      <p class="hub-hero-stat" id="hub-hero-stat" aria-live="polite"></p>
+    </div>
+  </section>
+
+  <section class="hub-section" id="featured" aria-labelledby="hub-featured-title" hidden>
+    <div class="hub-wrap">
+      <h2 id="hub-featured-title">Featured projects</h2>
+      <div class="hub-grid hub-grid-featured" id="hub-featured-grid"></div>
+    </div>
+  </section>
+
+  <section class="hub-section hub-section-alt" id="projects" aria-labelledby="hub-projects-title">
+    <div class="hub-wrap">
+      <h2 id="hub-projects-title">Explore projects</h2>
+
+      <form class="hub-filters" id="hub-filters" role="search" aria-label="Search and filter projects" autocomplete="off">
+        <div class="hub-field hub-field-search">
+          <label for="hub-q">Search</label>
+          <input id="hub-q" type="search" placeholder="Search by name, description or keyword" maxlength="100">
+        </div>
+        <div class="hub-field"><label for="hub-f-category">Category</label><select id="hub-f-category"><option value="">All categories</option></select></div>
+        <div class="hub-field"><label for="hub-f-type">Project type</label><select id="hub-f-type"><option value="">All types</option></select></div>
+        <div class="hub-field"><label for="hub-f-tech">Technology</label><select id="hub-f-tech"><option value="">All technologies</option></select></div>
+        <div class="hub-field"><label for="hub-f-status">Status</label><select id="hub-f-status"><option value="">All statuses</option></select></div>
+        <div class="hub-field">
+          <label for="hub-sort">Sort by</label>
+          <select id="hub-sort">
+            <option value="featured">Featured first</option>
+            <option value="newest">Newest</option>
+            <option value="oldest">Oldest</option>
+            <option value="az">A–Z</option>
+          </select>
+        </div>
+        <div class="hub-field hub-field-clear"><button type="button" class="hub-btn hub-btn-ghost" id="hub-clear">Clear all filters</button></div>
+      </form>
+
+      <p class="hub-count" id="hub-count" role="status" aria-live="polite"></p>
+
+      <div class="hub-grid" id="hub-grid" aria-busy="true"></div>
+
+      <div class="hub-state" id="hub-empty" hidden>
+        <h3>No projects match your search</h3>
+        <p>Try a different word, or clear the filters to see everything.</p>
+        <button type="button" class="hub-btn hub-btn-primary" id="hub-empty-clear">Clear all filters</button>
+      </div>
+      <div class="hub-state hub-state-error" id="hub-error" hidden role="alert">
+        <h3>Couldn't load the projects</h3>
+        <p id="hub-error-msg">Please check your connection and try again.</p>
+        <button type="button" class="hub-btn hub-btn-primary" id="hub-retry">Try again</button>
+      </div>
+      <div class="hub-more" id="hub-more-wrap" hidden><button type="button" class="hub-btn hub-btn-ghost" id="hub-more">Show more projects</button></div>
+    </div>
+  </section>
+
+  <section class="hub-section" id="categories" aria-labelledby="hub-cats-title">
+    <div class="hub-wrap">
+      <h2 id="hub-cats-title">Project categories</h2>
+      <ul class="hub-cats" id="hub-cats"></ul>
+    </div>
+  </section>
+
+  <section class="hub-section hub-section-alt" id="about" aria-labelledby="hub-about-title">
+    <div class="hub-wrap hub-about">
+      <div>
+        <h2 id="hub-about-title">About Sabbir</h2>
+        <p id="hub-about-intro"></p>
+        <h3>How I build</h3>
+        <p id="hub-about-philosophy"></p>
+        <h3>Why this directory exists</h3>
+        <p id="hub-about-purpose"></p>
+        <p><a class="hub-btn hub-btn-ghost" id="hub-ref-link" href="#" rel="noopener noreferrer" target="_blank" hidden>Visit my main website</a></p>
+      </div>
+      <aside class="hub-tech" aria-labelledby="hub-tech-title">
+        <h3 id="hub-tech-title">Technologies I use</h3>
+        <ul id="hub-tech-list" class="hub-chips"></ul>
+      </aside>
+    </div>
+  </section>
+
+  <section class="hub-section" id="contact" aria-labelledby="hub-contact-title">
+    <div class="hub-wrap hub-contact">
+      <h2 id="hub-contact-title">Contact</h2>
+      <p id="hub-contact-note"></p>
+      <p id="hub-contact-email-wrap" hidden><a class="hub-btn hub-btn-primary" id="hub-contact-email" href="#">Email me</a></p>
+      <p class="hub-muted" id="hub-contact-none" hidden>Contact details have not been published yet.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="hub-footer">
+  <div class="hub-wrap hub-footer-grid">
+    <div>
+      <p class="hub-footer-brand" id="hub-footer-brand">Sabbir</p>
+      <p id="hub-footer-text"></p>
+      <ul class="hub-social" id="hub-social-foot" aria-label="Social media"></ul>
+    </div>
+    <div>
+      <h3>Quick links</h3>
+      <ul class="hub-list">
+        <li><a href="#home">Home</a></li><li><a href="#projects">Explore Projects</a></li><li><a href="#categories">Categories</a></li>
+        <li><a href="#about">About</a></li><li><a href="#contact">Contact</a></li>
+        <li><a id="hub-footer-ref" href="#" rel="noopener noreferrer" target="_blank" hidden>Reference website</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Categories</h3>
+      <ul class="hub-list" id="hub-footer-cats"></ul>
+    </div>
+  </div>
+  <div class="hub-wrap hub-footer-bottom">
+    <p id="hub-copy">© <span id="hub-year"></span> Sabbir. All rights reserved.</p>
+    <p><button type="button" class="hub-linkbtn" data-legal="privacy">Privacy policy</button> · <button type="button" class="hub-linkbtn" data-legal="terms">Terms of use</button> · <button type="button" class="hub-linkbtn" id="hub-install-help">Add to home screen</button></p>
+  </div>
+</footer>
+
+<dialog class="hub-dialog" id="hub-dialog" aria-labelledby="hub-dialog-title">
+  <div class="hub-dialog-head">
+    <h2 id="hub-dialog-title"></h2>
+    <button type="button" class="hub-close" id="hub-dialog-close" aria-label="Close">✕</button>
+  </div>
+  <div class="hub-dialog-body" id="hub-dialog-body"></div>
+  <div class="hub-dialog-foot" id="hub-dialog-foot"></div>
+</dialog>
+<noscript><p style="padding:16px">This directory needs JavaScript. Please enable it to browse the projects.</p></noscript>
+
+<!-- config.js is the ONLY file you normally edit. -->
+<script src="config.js"></script>
+<script src="assets/hub.js"></script>
+</body>
+</html>
